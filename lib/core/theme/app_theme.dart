@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class AppTheme {
   static const kprimaryColor = Color.fromARGB(255, 242, 104, 77);
   static const kcontentColor = Color.fromARGB(255, 255, 255, 255);
@@ -31,7 +30,7 @@ class AppTheme {
       appBarTheme: _lightAppBarTheme,
       scaffoldBackgroundColor: kcontentColor,
       cardColor: kcontentColor,
-      inputDecorationTheme: _inputDecorationTheme(secondaryColor),
+      inputDecorationTheme: _inputDecorationTheme(secondaryColor, kcontentColor),
       elevatedButtonTheme: _lightElevatedButtonTheme(),
       floatingActionButtonTheme: _floatingActionButtonTheme(
           kcontentColor, const Color.fromARGB(0, 28, 57, 65)),
@@ -88,7 +87,7 @@ class AppTheme {
       appBarTheme: _darkAppBarTheme,
       scaffoldBackgroundColor: secondaryColor,
       cardColor: const Color.fromARGB(255, 57, 57, 57),
-      inputDecorationTheme: _inputDecorationTheme(kcontentColor),
+      inputDecorationTheme: _inputDecorationTheme(kcontentColor, thirdColor),
       elevatedButtonTheme: _darkElevatedButtonTheme(),
       floatingActionButtonTheme: _floatingActionButtonTheme(
           const Color.fromARGB(255, 57, 57, 57), kcontentColor),
@@ -186,8 +185,10 @@ class AppTheme {
   );
 
   /// Input Decoration Theme
-  static InputDecorationTheme _inputDecorationTheme(Color borderColor) {
+  static InputDecorationTheme _inputDecorationTheme(Color borderColor, Color backgroundColor) {
     return InputDecorationTheme(
+      fillColor: backgroundColor,
+      filled: true,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: borderColor),
@@ -195,6 +196,12 @@ class AppTheme {
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 16,
         vertical: 12,
+      ),
+      hintStyle: TextStyle(
+        color: borderColor.withOpacity(0.7),
+      ),
+      labelStyle: TextStyle(
+        color: borderColor,
       ),
     );
   }
@@ -269,49 +276,36 @@ class AppTheme {
         fontFamily: fontFamily,
         fontSize: 28,
         fontWeight: FontWeight.bold,
-        height: 1.4,
+        height: 1.5,
+        textBaseline: TextBaseline.alphabetic,
       ),
       displaySmall: TextStyle(
         fontFamily: fontFamily,
         fontSize: 24,
         fontWeight: FontWeight.bold,
-        height: 1.3,
+        height: 1.5,
+        textBaseline: TextBaseline.alphabetic,
       ),
       bodyLarge: TextStyle(
+        fontFamily: fontFamily,
+        fontSize: 18,
+        fontWeight: FontWeight.normal,
+        height: 1.5,
+        textBaseline: TextBaseline.alphabetic,
+      ),
+      bodyMedium: TextStyle(
         fontFamily: fontFamily,
         fontSize: 16,
         fontWeight: FontWeight.normal,
         height: 1.5,
+        textBaseline: TextBaseline.alphabetic,
       ),
-      bodyMedium: TextStyle(
+      bodySmall: TextStyle(
         fontFamily: fontFamily,
         fontSize: 14,
         fontWeight: FontWeight.normal,
         height: 1.5,
-      ),
-      bodySmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 12,
-        fontWeight: FontWeight.normal,
-        height: 1.4,
-      ),
-      labelLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-        height: 1.5,
-      ),
-      titleMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 18,
-        fontWeight: FontWeight.normal,
-        height: 1.4,
-      ),
-      titleSmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 18,
-        fontWeight: FontWeight.normal,
-        height: 1.3,
+        textBaseline: TextBaseline.alphabetic,
       ),
     );
   }

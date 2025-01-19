@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
+import '../imports/imports.dart';
 class ErrorScreen extends StatefulWidget {
   const ErrorScreen({super.key});
 
@@ -13,7 +11,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("ErrorPage "),
+        child: Text("Error Page "),
       ),
     );
   }

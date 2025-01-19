@@ -1,7 +1,5 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'core/imports/imports.dart';
 void main() async {
-  // Ensure Flutter bindings are initialized
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -18,5 +16,4 @@ void main() async {
     runApp(MyApp(prefs: prefs));
   } catch (e) {
     print('Error initializing Firebase: $e');
-  }
-}
+  }}
