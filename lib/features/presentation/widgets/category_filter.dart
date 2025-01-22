@@ -73,13 +73,13 @@ class CategoryFilterState extends State<CategoryFilter> {
           fontSize: 14,
           fontWeight: FontWeight.bold,
           color: selectedCategory == key
-              ? AppTheme.kcontentColor // اللون للنص المحدد
+              ? AppTheme.contentColor // اللون للنص المحدد
               : AppTheme.secondaryColor,
         ),
       ),
       selected: selectedCategory == key,
-      selectedColor: AppTheme.kprimaryColor, // اللون للخلفية المحددة
-      backgroundColor: AppTheme.kcontentColor,
+      selectedColor: AppTheme.primaryColor, // اللون للخلفية المحددة
+      backgroundColor: AppTheme.contentColor,
       onSelected: (isSelected) {
         setState(() {
           selectedCategory = key;

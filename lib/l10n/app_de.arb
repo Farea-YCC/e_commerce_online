@@ -60,7 +60,7 @@
   "emptyCart": "Ihr Warenkorb ist leer",
   "backToShop": "Zurück zum Shop",
   "noInternet": "Keine Internetverbindung, bitte überprüfen Sie Ihre Verbindung",
-  "goodEvening": "Guten Abend Farea",
+  "goodEvening": "Guten Abend ",
   "searchTooltip": "Produkte suchen",
   "cartTooltip": "Zum Warenkorb",
   "homeTooltip": "Startseite",
@@ -159,5 +159,13 @@
   "walkthrough_img_3": "assets/images/slider.png",
   "skipText": "Überspringen",
   "nextText": "Weiter",
-  "doneText": "Loslegen"
+  "doneText": "Loslegen",
+  "french": "Französisch",
+  "german": "Deutsch",
+  "italian": "Italienisch",
+  "spanish": "Spanisch",
+  "portuguese": "Portugiesisch",
+  "russian": "Russisch",
+  "chinese": "Chinesisch",
+  "japanese": "Japanisch"
 }

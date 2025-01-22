@@ -173,7 +173,7 @@ class SearchState extends State<Search> {
                             favProvider.favoriteItems.contains(product)
                                 ? Icons.favorite
                                 : Icons.favorite_border,
-                            color: AppTheme.kprimaryColor,
+                            color: AppTheme.primaryColor,
                           ),
                           onPressed: () {
                             if (favProvider.favoriteItems.contains(product)) {

@@ -39,7 +39,6 @@ class LanguageProvider with ChangeNotifier {
     }
   }
 
-  // Set a specific locale
   void setLocale(Locale locale) {
     if (!_isLocaleSupported(locale)) return; // التحقق إذا كانت اللغة مدعومة
     if (_locale == locale) return; // تجنب التحديث إذا كانت نفس اللغة
@@ -47,8 +46,6 @@ class LanguageProvider with ChangeNotifier {
     prefs.setString('language_code', locale.languageCode);
     notifyListeners();
   }
-
-  // Check if locale is supported
   bool _isLocaleSupported(Locale locale) {
     return supportedLocales.contains(locale);
   }

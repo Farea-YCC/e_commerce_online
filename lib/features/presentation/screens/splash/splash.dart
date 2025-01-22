@@ -37,13 +37,13 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.shopping_cart,
-                  size: 100.0, color: AppTheme.kprimaryColor),
+                  size: 100.0, color: AppTheme.primaryColor),
               SizedBox(height: 20),
               Text(l10n.welcomemycart,
                   style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
-                    color: AppTheme.kprimaryColor,
+                    color: AppTheme.primaryColor,
               )),
             ],
           ),

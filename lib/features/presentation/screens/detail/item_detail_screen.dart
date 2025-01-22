@@ -52,12 +52,12 @@ class ItemDetailPage extends StatelessWidget {
         child: CircleAvatar(
           backgroundColor: isDarkTheme
               ? Colors.grey[900]!.withOpacity(0.7)
-              : AppTheme.kcontentColor.withOpacity(0.7),
+              : AppTheme.contentColor.withOpacity(0.7),
           child: IconButton(
             icon: Icon(
               Icons.arrow_back_ios_new,
               size: 18,
-              color: isDarkTheme ? AppTheme.kcontentColor : Colors.black87,
+              color: isDarkTheme ? AppTheme.contentColor : Colors.black87,
             ),
             onPressed: () => Navigator.pop(context),
           ),
@@ -69,7 +69,7 @@ class ItemDetailPage extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: isDarkTheme
                 ? Colors.grey[900]!.withOpacity(0.7)
-                : AppTheme.kcontentColor.withOpacity(0.7),
+                : AppTheme.contentColor.withOpacity(0.7),
             child: Consumer<FavoritesProvider>(
               builder: (context, favProvider, _) {
                 final isFavorite = favProvider.favoriteItems.contains(product);
@@ -79,7 +79,7 @@ class ItemDetailPage extends StatelessWidget {
                     child: Icon(
                       isFavorite ? Icons.favorite : Icons.favorite_border,
                       key: ValueKey<bool>(isFavorite),
-                      color: isFavorite ? AppTheme.kprimaryColor : Colors.grey,
+                      color: isFavorite ? AppTheme.primaryColor : Colors.grey,
                       size: 18,
                     ),
                   ),
@@ -94,7 +94,7 @@ class ItemDetailPage extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: isDarkTheme
                 ? Colors.grey[900]!.withOpacity(0.7)
-                : AppTheme.kcontentColor.withOpacity(0.7),
+                : AppTheme.contentColor.withOpacity(0.7),
             child: IconButton(
               icon: const Icon(Icons.share, color: Colors.grey, size: 18),
               onPressed: () => _shareProduct(context, product),

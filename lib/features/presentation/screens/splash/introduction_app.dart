@@ -84,8 +84,8 @@ class IntroductionAppState extends State<IntroductionApp>
         ),
         bottom: TabBar(
           controller: _tabController,
-          indicatorColor: AppTheme.kprimaryColor,
-          labelColor: AppTheme.kprimaryColor,
+          indicatorColor: AppTheme.primaryColor,
+          labelColor: AppTheme.primaryColor,
           unselectedLabelColor: Colors.grey,
           labelStyle: TextStyle(
             fontSize: 20.0,

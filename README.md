@@ -264,3 +264,49 @@ lib/
 │       ├── product_card.dart
 │       └── cart_item.dart
 >>>>>>> 60c658d (تم حل كثير من المشاكل واضافة تحسين في التصميم)
+
+## Git Workflow
+
+Follow these steps to work on a feature branch and keep it updated with the main branch:
+
+1. **Switch to the main branch**:
+   ```bash
+   git checkout master
+# Git Workflow
+
+## 1. Switch to the main branch
+```bash
+git checkout master
+```
+
+## 2. Update the main branch with the latest changes
+```bash
+git pull origin master
+```
+
+## 3. Create a new branch for your work
+```bash
+git checkout -b feature-branch
+```
+
+## 4. Make changes and save them
+```bash
+git add .
+git commit -m "Description of the changes"
+```
+
+## 5. Update the main branch before merging
+```bash
+git checkout master
+git pull origin master
+```
+
+## 6. Merge the main branch into your feature branch
+```bash
+git checkout feature-branch
+git merge master
+```
+
+## 7. Push your feature branch to the remote repository
+```bash
+git push origin feature-branch

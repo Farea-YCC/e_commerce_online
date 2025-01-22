@@ -15,78 +15,122 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+
   Future<void> signInWithEmailAndPassword() async {
-    final l10n = AppLocalizations.of(context)!;
     if (formKey.currentState!.validate()) {
       try {
-        final credential =
-            await FirebaseAuth.instance.signInWithEmailAndPassword(
+        final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
-
         if (credential.user!.emailVerified) {
-          if (mounted) {
-            Navigator.of(context).pushReplacementNamed('/BottomNavBar');
-          }
+          Navigator.of(context).pushReplacementNamed('/BottomNavBar');
         } else {
           await FirebaseAuth.instance.currentUser!.sendEmailVerification();
           if (mounted) {
             AwesomeDialog(
               context: context,
               dialogType: DialogType.error,
-              title: l10n.loginErrorTitle,
-              desc: l10n.verifyEmailMessage,
+              animType: AnimType.rightSlide,
+              title: 'خطأ في تسجيل الدخول',
+              desc: 'يرجى التحقق من بريدك الإلكتروني.',
             ).show();
           }
         }
       } on FirebaseAuthException catch (e) {
-        String errorMessage = l10n.genericErrorMessage;
         if (e.code == 'user-not-found') {
-          errorMessage = l10n.userNotFoundErrorMessage;
+          if (mounted) {
+            AwesomeDialog(
+              context: context,
+              dialogType: DialogType.error,
+              animType: AnimType.rightSlide,
+              title: 'خطأ في تسجيل الدخول',
+              desc: 'لم يتم العثور على مستخدم بهذا البريد الإلكتروني.',
+            ).show();
+          }
         } else if (e.code == 'wrong-password') {
-          errorMessage = l10n.incorrectPasswordErrorMessage;
-        }
-        if (mounted) {
-          AwesomeDialog(
-            context: context,
-            dialogType: DialogType.error,
-            title: l10n.loginErrorTitle,
-            desc: errorMessage,
-          ).show();
+          if (mounted) {
+            AwesomeDialog(
+              context: context,
+              dialogType: DialogType.error,
+              animType: AnimType.rightSlide,
+              title: 'خطأ في تسجيل الدخول',
+              desc: 'كلمة المرور غير صحيحة لهذا المستخدم.',
+            ).show();
+          }
+        } else {
+          if (mounted) {
+            AwesomeDialog(
+              context: context,
+              dialogType: DialogType.error,
+              animType: AnimType.rightSlide,
+              title: 'خطأ في تسجيل الدخول',
+              desc: e.message,
+            ).show();
+          }
         }
       }
+    } else {
+      print("النموذج غير صالح");
     }
   }
 
   Future<void> signInWithGoogle() async {
-    final l10n = AppLocalizations.of(context)!;
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null) return;
-
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-      final credential = GoogleAuthProvider.credential(
+      if (googleUser == null) {
+        return; // المستخدم ألغى تسجيل الدخول
+      }
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-
       await FirebaseAuth.instance.signInWithCredential(credential);
-      if (mounted) {
-        Navigator.of(context)
-            .pushNamedAndRemoveUntil('/BottomNavBar', (route) => false);
-      }
+      Navigator.of(context).pushNamedAndRemoveUntil('/BottomNavBar', (route) => false);
     } catch (e) {
-      if (mounted) {
-        AwesomeDialog(
-          context: context,
-          dialogType: DialogType.error,
-          title: l10n.loginErrorTitle,
-          desc: l10n.googleLoginFailedMessage,
-        ).show();
-      }
+      AwesomeDialog(
+        context: context,
+        dialogType: DialogType.error,
+        animType: AnimType.rightSlide,
+        title: 'خطأ في تسجيل الدخول',
+        desc: 'فشل تسجيل الدخول باستخدام Google. حاول مرة أخرى',
+
+      ).show();
     }
+  }
+
+
+  void _showErrorDialog({required String title, required String description}) {
+    if (mounted) {
+      AwesomeDialog(
+        context: context,
+        dialogType: DialogType.error,
+        animType: AnimType.rightSlide,
+        title: title,
+        desc: description,
+      ).show();
+    }
+  }
+
+  /// التعامل مع استثناءات FirebaseAuth
+  void _handleAuthException(FirebaseAuthException e) {
+    String message;
+    switch (e.code) {
+      case 'user-not-found':
+        message = 'لم يتم العثور على مستخدم بهذا البريد الإلكتروني.';
+        break;
+      case 'wrong-password':
+        message = 'كلمة المرور غير صحيحة.';
+        break;
+      default:
+        message = e.message ?? 'حدث خطأ غير متوقع.';
+    }
+
+    _showErrorDialog(
+      title: 'خطأ في تسجيل الدخول',
+      description: message,
+    );
   }
 
   @override
@@ -94,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      body: Container(
+      body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
           children: [
@@ -104,8 +148,7 @@ class _LoginPageState extends State<LoginPage> {
             Center(
               child: Text(
                 l10n.loginButton,
-                style:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 16),
@@ -119,6 +162,8 @@ class _LoginPageState extends State<LoginPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return l10n.emptyFieldError;
+                      } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                        return l10n.invalidEmailError;
                       }
                       return null;
                     },
@@ -130,53 +175,42 @@ class _LoginPageState extends State<LoginPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return l10n.emptyFieldError;
+                      } else if (value.length < 6) {
+                        return l10n.passwordLengthError;
                       }
                       return null;
                     },
                   ),
                   const SizedBox(height: 16),
-                  InkWell(
-                    onTap: () async {
-                      if (emailController.text.isEmpty) {
-                        if (context.mounted) {
-                          AwesomeDialog(
-                            context: context,
-                            dialogType: DialogType.error,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: InkWell(
+                      onTap: () async {
+                        if (emailController.text.isEmpty) {
+                          _showErrorDialog(
                             title: l10n.error,
-                            desc: l10n.enterEmailBeforeForgotPassword,
-                          ).show();
+                            description: l10n.enterEmailBeforeForgotPassword,
+                          );
+                          return;
                         }
-                        return;
-                      }
 
-                      try {
-                        await FirebaseAuth.instance.sendPasswordResetEmail(
-                            email: emailController.text);
-                        if (context.mounted) {
-                          AwesomeDialog(
-                            context: context,
-                            dialogType: DialogType.success,
+                        try {
+                          await FirebaseAuth.instance.sendPasswordResetEmail(
+                              email: emailController.text.trim());
+                          _showErrorDialog(
                             title: l10n.success,
-                            desc: l10n.checkEmailForReset,
-                          ).show();
-                        }
-                      } catch (e) {
-                        if (context.mounted) {
-                          AwesomeDialog(
-                            context: context,
-                            dialogType: DialogType.error,
+                            description: l10n.checkEmailForReset,
+                          );
+                        } catch (e) {
+                          _showErrorDialog(
                             title: l10n.error,
-                            desc: l10n.checkEmailError,
-                          ).show();
+                            description: l10n.checkEmailError,
+                          );
                         }
-                      }
-                    },
-                    child: Align(
-                      alignment: Alignment.centerLeft,
+                      },
                       child: Text(
                         l10n.forgotPassword,
-                        style: const TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),

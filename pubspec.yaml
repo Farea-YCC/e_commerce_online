@@ -17,7 +17,6 @@ dependencies:
   icons_plus:
   sqflite:
   path:
-  provider:
   path_provider:
   http:
   dio:
@@ -25,22 +24,23 @@ dependencies:
   awesome_dialog:
   shared_preferences:
   google_fonts:
-
-  # Firebase dependencies
-  firebase_core:
-  cloud_firestore:
-  firebase_storage:
-  firebase_messaging:
-  firebase_auth:
+  firebase_core: ^3.10.1
+  firebase_auth: ^4.17.7
+  cloud_firestore: ^5.6.2
+  firebase_storage: ^12.4.1
+  google_sign_in: ^6.2.2
+  firebase_messaging: ^15.2.1
+  provider: ^6.1.2
   introduction_screen:
-  google_sign_in:
-  intl:
+
+  intl: any
   internet_connection_checker_plus: ^1.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+
 flutter:
   uses-material-design: true
   generate: true

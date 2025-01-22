@@ -10,8 +10,8 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.onPressed,
-    this.color =  AppTheme.kprimaryColor,
-    this.textColor = AppTheme.kcontentColor,
+    this.color =  AppTheme.primaryColor,
+    this.textColor = AppTheme.contentColor,
   });
 
   @override

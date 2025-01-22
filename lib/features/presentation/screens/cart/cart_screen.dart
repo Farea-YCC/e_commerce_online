@@ -27,8 +27,14 @@ class _CartPageState extends State<CartPage> {
     double total = cartProvider.subtotal - _discount;
     if (total < 0) total = 0;
 
-    return Scaffold(
+    return  WillPopScope(
+        onWillPop: () async {
+      Navigator.of(context).pushReplacementNamed('/BottomNavBar');
+      return false;
+    },
+    child:Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false, // إخفاء زر العودة
         title: Text(l10n.myCart),
       ),
       body: SafeArea(
@@ -46,10 +52,10 @@ class _CartPageState extends State<CartPage> {
                     key: Key(product.id.toString()),
                     direction: DismissDirection.endToStart,
                     background: Container(
-                      color: AppTheme.kprimaryColor,
+                      color: AppTheme.primaryColor,
                       alignment: Alignment.centerRight,
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: const Icon(Icons.delete, color: AppTheme.kcontentColor),
+                      child: const Icon(Icons.delete, color: AppTheme.contentColor),
                     ),
                     onDismissed: (direction) {
                       cartProvider.removeItemCompletely(product);
@@ -69,7 +75,7 @@ class _CartPageState extends State<CartPage> {
           ],
         ),
       ),
-    );
+    ));
   }
 
   Widget _buildCartItem(BuildContext context, ProductModel product, int quantity, CartProvider cartProvider) {
@@ -109,7 +115,7 @@ class _CartPageState extends State<CartPage> {
                 Text(
                   "\$${product.price?.toStringAsFixed(2) ?? '0.00'}",
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: AppTheme.kprimaryColor,
+                    color: AppTheme.primaryColor,
                   ),
                 ),
               ],
@@ -147,7 +153,9 @@ class _CartPageState extends State<CartPage> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppTheme.kcontentColor,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? AppTheme.thirdColor // For dark theme
+            : AppTheme.contentColor, // For light theme
         borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
         boxShadow: [
           BoxShadow(
@@ -180,7 +188,7 @@ class _CartPageState extends State<CartPage> {
               const SizedBox(width: 8),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppTheme.kprimaryColor,
+                  backgroundColor: AppTheme.primaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -195,7 +203,7 @@ class _CartPageState extends State<CartPage> {
                 child: Text(
                   l10n.apply,  // الترجمة لزر تطبيق الخصم
                   style: const TextStyle(
-                    color: AppTheme.kcontentColor,
+                    color: AppTheme.contentColor,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
@@ -240,7 +248,7 @@ class _CartPageState extends State<CartPage> {
           // Checkout Button
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppTheme.kprimaryColor,
+              backgroundColor: AppTheme.primaryColor,
               minimumSize: const Size(double.infinity, 56),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -253,7 +261,7 @@ class _CartPageState extends State<CartPage> {
             child: Text(
               l10n.checkout,  // الترجمة لزر الدفع
               style: const TextStyle(
-                color: AppTheme.kcontentColor,
+                color: AppTheme.contentColor,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),

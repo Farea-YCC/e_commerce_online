@@ -18,12 +18,13 @@ class LanguageSwitcher extends StatelessWidget {
     final List<Map<String, dynamic>> languages = [
       {'name': l10n.english, 'locale': const Locale('en', 'US')},
       {'name': l10n.arabic, 'locale': const Locale('ar', 'AE')},
-      {'name': l10n.about, 'locale': const Locale('fr', 'FR')},
-      {'name': l10n.about, 'locale': const Locale('es', 'ES')},
-      {'name': l10n.about, 'locale': const Locale('de', 'DE')},
+      {'name': l10n.french, 'locale': const Locale('fr', 'FR')},
+      {'name': l10n.spanish, 'locale': const Locale('es', 'ES')},
+      {'name': l10n.german, 'locale': const Locale('de', 'DE')},
     ];
 
     showModalBottomSheet(
+      backgroundColor: AppTheme.thirdColor,
       context: context,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),

@@ -1,5 +1,4 @@
 {
-  "@@locale": "fr",
   "tooltip": "Ajouter une note",
   "areYouSuredelete": "Êtes-vous sûr de vouloir supprimer cette note ?",
   "title": "Toutes les notes",
@@ -61,7 +60,7 @@
   "emptyCart": "Votre panier est vide",
   "backToShop": "Retour à la boutique",
   "noInternet": "Pas de connexion Internet, veuillez vérifier votre connexion",
-  "goodEvening": "Bonsoir Farea",
+  "goodEvening": "Bonsoir ",
   "searchTooltip": "Rechercher des produits",
   "cartTooltip": "Accéder au panier",
   "homeTooltip": "Page d'accueil",

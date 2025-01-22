@@ -75,7 +75,7 @@ class ProductCardView extends StatelessWidget {
                     Container(
                       height: imageHeight,
                       width: constraints.maxWidth,
-                      decoration: const BoxDecoration(color: AppTheme.kcontentColor),
+                      decoration: const BoxDecoration(color: AppTheme.contentColor),
                       child: Image.network(
                         product.image ?? 'https://i.pravatar.cc',
                         fit: BoxFit.contain,
@@ -107,13 +107,13 @@ class ProductCardView extends StatelessWidget {
                             vertical: cardPadding / 4,
                           ),
                           decoration: BoxDecoration(
-                            color: AppTheme.kprimaryColor,
+                            color: AppTheme.primaryColor,
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
                             '20% OFF',
                             style: TextStyle(
-                              color:AppTheme.kcontentColor,
+                              color:AppTheme.contentColor,
                               fontSize: priceFontSize - 2,
                               fontWeight: FontWeight.bold,
                             ),
@@ -142,7 +142,7 @@ class ProductCardView extends StatelessWidget {
                     Text(
                       "\$${product.price?.toStringAsFixed(2) ?? '0.00'}",
                       style: TextStyle(
-                        color: AppTheme.kprimaryColor,
+                        color: AppTheme.primaryColor,
                         fontSize: priceFontSize,
                         fontWeight: FontWeight.bold,
                       ),

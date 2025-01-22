@@ -18,27 +18,30 @@ class _SignUpPageState extends State<SignUpPage> {
       TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  Future<void> signUp() async {
+  Future signUp() async {
     final l10n = AppLocalizations.of(context)!;
     if (formKey.currentState!.validate()) {
       try {
-        final credential =
-            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
 
         await credential.user!.sendEmailVerification();
 
-        Navigator.of(context).pushReplacementNamed('/LoginPage');
+        if (mounted) {
+          Navigator.of(context).pushReplacementNamed('/LoginPage');
+        }
       } on FirebaseAuthException catch (e) {
-        AwesomeDialog(
-          context: context,
-          dialogType: DialogType.error,
-          title: l10n.registrationErrorTitle,
-          desc: e.message ?? l10n.genericErrorMessage,
-          transitionAnimationDuration: const Duration(seconds: 1),
-        ).show();
+        if (mounted) {
+          AwesomeDialog(
+            context: context,
+            dialogType: DialogType.error,
+            title: l10n.registrationErrorTitle,
+            desc: e.message ?? l10n.genericErrorMessage,
+            transitionAnimationDuration: const Duration(seconds: 1),
+          ).show();
+        }
       }
     }
   }
@@ -46,7 +49,6 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(16),
@@ -127,7 +129,7 @@ class _SignUpPageState extends State<SignUpPage> {
             CustomButton(
               title: l10n.signUpButton,
               onPressed: signUp,
-              textColor: AppTheme.kcontentColor,
+              textColor: AppTheme.contentColor,
             ),
           ],
         ),

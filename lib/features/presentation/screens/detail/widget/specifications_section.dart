@@ -15,8 +15,8 @@ class SpecificationsSection extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: theme.brightness == Brightness.light
-            ? const Color.fromARGB(255, 255, 255, 255)
-            : const Color.fromARGB(255, 57, 57, 57),
+            ?  Colors.white
+            :  Color(0xFF393939),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(

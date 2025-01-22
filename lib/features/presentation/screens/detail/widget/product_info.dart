@@ -35,13 +35,13 @@ class ProductInfo extends StatelessWidget {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: AppTheme.kprimaryColor.withOpacity(0.1),
+                  color: AppTheme.primaryColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Text(
                   "\$${product.price?.toString() ?? '0.0'}",
                   style: theme.textTheme.titleLarge?.copyWith(
-                    color: AppTheme.kprimaryColor,
+                    color: AppTheme.primaryColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -55,21 +55,21 @@ class ProductInfo extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                  color: AppTheme.kTextSuccsesColor.withOpacity(0.1),
+                  color: AppTheme.successColor .withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(
                   children: [
                     const Icon(
                       Icons.check_circle,
-                      color: AppTheme.kTextSuccsesColor,
+                      color: AppTheme.successColor ,
                       size: 16,
                     ),
                     const SizedBox(width: 4),
                     Text(
                       l10n?.inStock ?? '', // النص الديناميكي
                       style: theme.textTheme.bodyMedium?.copyWith(
-                        color: AppTheme.kTextSuccsesColor,
+                        color: AppTheme.successColor ,
                         fontWeight: FontWeight.w500,
                       ),
                     ),

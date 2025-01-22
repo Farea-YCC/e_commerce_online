@@ -1,4 +1,5 @@
 {
+
   "tooltip": "Agregar nota",
   "areYouSuredelete": "¿Estás seguro de que quieres eliminar esta nota?",
   "title": "Todas las notas",
@@ -60,7 +61,7 @@
   "emptyCart": "Tu carrito está vacío",
   "backToShop": "Volver a la tienda",
   "noInternet": "Sin conexión a Internet, por favor verifica tu conexión",
-  "goodEvening": "Buenas noches Farea",
+  "goodEvening": "Buenas noches ",
   "searchTooltip": "Buscar productos",
   "cartTooltip": "Ir al carrito",
   "homeTooltip": "Inicio",

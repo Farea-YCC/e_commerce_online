@@ -53,7 +53,7 @@ class ProductViewState extends State<ProductView> {
                     const Icon(
                       Icons.wifi_off,
                       size: 80,
-                      color: AppTheme.kprimaryColor,
+                      color: AppTheme.primaryColor,
                     ),
                     const SizedBox(height: 20),
                     Text(

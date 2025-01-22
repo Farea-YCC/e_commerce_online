@@ -8,7 +8,7 @@ class CustomLogoAuth extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(Icons.shopping_cart, size: 80,
-            color: AppTheme.kprimaryColor
+            color: AppTheme.primaryColor
         ),
       ],
     );
