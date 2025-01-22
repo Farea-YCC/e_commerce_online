@@ -1,20 +1,22 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'core/imports/imports.dart';
+import 'firebase_options.dart';
+
 void main() async {
-  // Ensure Flutter bindings are initialized
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   try {
     await Firebase.initializeApp(
-      options: const FirebaseOptions(
-        apiKey: "YOUR_API_KEY",
-        appId: "YOUR_APP_ID",
-        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-        projectId: "YOUR_PROJECT_ID",
-      ),
+      options: DefaultFirebaseOptions.currentPlatform,
     );
-    final prefs = await SharedPreferences.getInstance();
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('========== User is currently signed out!!! Pleas go to login ');
+      } else {
+        print('========== User is signed in!!!');
+      }
+    });
+
     runApp(MyApp(prefs: prefs));
   } catch (e) {
     print('Error initializing Firebase: $e');

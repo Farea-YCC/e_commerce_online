@@ -1,51 +1,51 @@
 import 'package:flutter/material.dart';
-
 class AppTheme {
-  static const kprimaryColor = Color.fromARGB(255, 242, 104, 77);
-  static const kcontentColor = Color.fromARGB(255, 255, 255, 255);
-  static const secondaryColor = Color.fromARGB(255, 0, 5, 5);
-  static const thirdColor = Color.fromARGB(255, 57, 57, 57);
-  static const kTextSuccsesColor = Colors.green;
-
+  static const Color primaryColor = Color(0xFFF2684D);
+  static const Color secondaryColor = Color(0xFF000505);
+  static const Color thirdColor = Color(0xFF393939);
+  static const Color contentColor = Colors.white;
+  static const Color successColor = Colors.green;
+  static const Color errorColor = Colors.red;
   /// Light Theme
   static ThemeData get lightTheme {
     return ThemeData(
       bottomSheetTheme: const BottomSheetThemeData(
-        backgroundColor: kcontentColor,
+        backgroundColor: contentColor,
+        modalBackgroundColor: contentColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
         ),
         elevation: 0,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: kcontentColor,
-        selectedItemColor: kprimaryColor,
+        backgroundColor: contentColor,
+        selectedItemColor: primaryColor,
         unselectedItemColor: secondaryColor,
         elevation: 0,
         type: BottomNavigationBarType.fixed,
       ),
-      dialogBackgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      dialogTheme: _dialoglightTheme(kcontentColor, secondaryColor),
+      dialogBackgroundColor:  Colors.white,
+      dialogTheme: _dialoglightTheme(contentColor, secondaryColor),
       useMaterial3: true,
       colorScheme: _lightColorScheme,
       appBarTheme: _lightAppBarTheme,
-      scaffoldBackgroundColor: kcontentColor,
-      cardColor: kcontentColor,
-      inputDecorationTheme: _inputDecorationTheme(secondaryColor),
+      scaffoldBackgroundColor: contentColor,
+      cardColor: contentColor,
+      inputDecorationTheme: _inputDecorationTheme(secondaryColor, contentColor),
       elevatedButtonTheme: _lightElevatedButtonTheme(),
       floatingActionButtonTheme: _floatingActionButtonTheme(
-          kcontentColor, const Color.fromARGB(0, 28, 57, 65)),
+          contentColor, const Color.fromARGB(0, 28, 57, 65)),
       textTheme: _getTextTheme(),
       splashFactory: InkRipple.splashFactory,
-      splashColor: kprimaryColor.withOpacity(0.08),
+      splashColor: primaryColor.withOpacity(0.08),
       textSelectionTheme: TextSelectionThemeData(
-        selectionHandleColor: kprimaryColor.withOpacity(1.0),
-        selectionColor: kprimaryColor.withOpacity(0.6),
-        cursorColor: kprimaryColor.withOpacity(1.0),
+        selectionHandleColor: primaryColor.withOpacity(1.0),
+        selectionColor: primaryColor.withOpacity(0.6),
+        cursorColor: primaryColor.withOpacity(1.0),
       ),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: kTextSuccsesColor,
-        contentTextStyle: const TextStyle(color: kcontentColor),
+        backgroundColor: successColor ,
+        contentTextStyle: const TextStyle(color: contentColor),
         behavior: SnackBarBehavior.floating,
         elevation: 2,
         shape: RoundedRectangleBorder(
@@ -67,16 +67,16 @@ class AppTheme {
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: secondaryColor,
-        selectedItemColor: kprimaryColor,
-        unselectedItemColor: kcontentColor,
+        selectedItemColor: primaryColor,
+        unselectedItemColor: contentColor,
         elevation: 10,
         type: BottomNavigationBarType.fixed,
       ),
-      dialogBackgroundColor: const Color.fromARGB(255, 57, 57, 57),
-      dialogTheme: _dialogDarkTheme(secondaryColor, kcontentColor),
+      dialogBackgroundColor: const Color(0xFF393939),
+      dialogTheme: _dialogDarkTheme(secondaryColor, contentColor),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: kTextSuccsesColor,
-        contentTextStyle: const TextStyle(color: kcontentColor),
+        backgroundColor: successColor ,
+        contentTextStyle: const TextStyle(color: contentColor),
         behavior: SnackBarBehavior.floating,
         elevation: 2,
         shape: RoundedRectangleBorder(
@@ -87,18 +87,18 @@ class AppTheme {
       colorScheme: _darkColorScheme,
       appBarTheme: _darkAppBarTheme,
       scaffoldBackgroundColor: secondaryColor,
-      cardColor: const Color.fromARGB(255, 57, 57, 57),
-      inputDecorationTheme: _inputDecorationTheme(kcontentColor),
+      cardColor: const Color(0xFF393939),
+      inputDecorationTheme: _inputDecorationTheme(contentColor, thirdColor),
       elevatedButtonTheme: _darkElevatedButtonTheme(),
       floatingActionButtonTheme: _floatingActionButtonTheme(
-          const Color.fromARGB(255, 57, 57, 57), kcontentColor),
+          const Color(0xFF393939), contentColor),
       textTheme: _getTextTheme(),
       splashFactory: InkRipple.splashFactory,
-      splashColor: kprimaryColor.withOpacity(0.08),
+      splashColor: primaryColor.withOpacity(0.08),
       textSelectionTheme: TextSelectionThemeData(
-        selectionHandleColor: kprimaryColor.withOpacity(1.0),
-        selectionColor: kprimaryColor.withOpacity(0.6),
-        cursorColor: kprimaryColor.withOpacity(1.0),
+        selectionHandleColor: primaryColor.withOpacity(1.0),
+        selectionColor: primaryColor.withOpacity(0.6),
+        cursorColor: primaryColor.withOpacity(1.0),
       ),
     );
   }
@@ -127,7 +127,7 @@ class AppTheme {
   static DialogTheme _dialoglightTheme(
       Color backgroundColor, Color contentColor) {
     return DialogTheme(
-      backgroundColor: kcontentColor,
+      backgroundColor: contentColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -147,24 +147,24 @@ class AppTheme {
   static const ColorScheme _lightColorScheme = ColorScheme(
     primary: secondaryColor,
     secondary: secondaryColor,
-    surface: kcontentColor,
+    surface: contentColor,
     error: Color.fromARGB(255, 242, 104, 77),
-    onPrimary: kcontentColor,
-    onSecondary: kcontentColor,
+    onPrimary: contentColor,
+    onSecondary: contentColor,
     onSurface: secondaryColor,
-    onError: kcontentColor,
+    onError: contentColor,
     brightness: Brightness.light,
   );
 
   /// Dark Color Scheme
   static const ColorScheme _darkColorScheme = ColorScheme(
-    primary: kcontentColor,
-    secondary: kcontentColor,
+    primary: contentColor,
+    secondary: contentColor,
     surface: secondaryColor,
     error: Color.fromARGB(255, 242, 104, 77),
     onPrimary: secondaryColor,
     onSecondary: secondaryColor,
-    onSurface: kcontentColor,
+    onSurface: contentColor,
     onError: secondaryColor,
     brightness: Brightness.dark,
   );
@@ -173,7 +173,7 @@ class AppTheme {
   static const AppBarTheme _lightAppBarTheme = AppBarTheme(
     centerTitle: true,
     elevation: 0,
-    backgroundColor: kcontentColor,
+    backgroundColor: contentColor,
     iconTheme: IconThemeData(color: secondaryColor),
   );
 
@@ -186,8 +186,11 @@ class AppTheme {
   );
 
   /// Input Decoration Theme
-  static InputDecorationTheme _inputDecorationTheme(Color borderColor) {
+  static InputDecorationTheme _inputDecorationTheme(Color borderColor, Color backgroundColor) {
     return InputDecorationTheme(
+
+      fillColor: backgroundColor,
+      filled: true,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: borderColor),
@@ -195,6 +198,12 @@ class AppTheme {
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 16,
         vertical: 12,
+      ),
+      hintStyle: TextStyle(
+        color: borderColor.withOpacity(0.7),
+      ),
+      labelStyle: TextStyle(
+        color: borderColor,
       ),
     );
   }
@@ -204,7 +213,7 @@ class AppTheme {
     return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: secondaryColor, // النص سيكون أبيض في الوضع الفاتح
-        backgroundColor: kcontentColor, // لون الزر في الوضع الفاتح
+        backgroundColor: contentColor, // لون الزر في الوضع الفاتح
         padding: const EdgeInsets.symmetric(
           horizontal: 24,
           vertical: 12,
@@ -225,7 +234,7 @@ class AppTheme {
   static ElevatedButtonThemeData _darkElevatedButtonTheme() {
     return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: kcontentColor, // النص سيكون أسود في الوضع الداكن
+        foregroundColor: contentColor, // النص سيكون أسود في الوضع الداكن
         backgroundColor: thirdColor, // لون الزر في الوضع الداكن
         padding: const EdgeInsets.symmetric(
           horizontal: 24,
@@ -269,49 +278,36 @@ class AppTheme {
         fontFamily: fontFamily,
         fontSize: 28,
         fontWeight: FontWeight.bold,
-        height: 1.4,
+        height: 1.5,
+        textBaseline: TextBaseline.alphabetic,
       ),
       displaySmall: TextStyle(
         fontFamily: fontFamily,
         fontSize: 24,
         fontWeight: FontWeight.bold,
-        height: 1.3,
+        height: 1.5,
+        textBaseline: TextBaseline.alphabetic,
       ),
       bodyLarge: TextStyle(
+        fontFamily: fontFamily,
+        fontSize: 18,
+        fontWeight: FontWeight.normal,
+        height: 1.5,
+        textBaseline: TextBaseline.alphabetic,
+      ),
+      bodyMedium: TextStyle(
         fontFamily: fontFamily,
         fontSize: 16,
         fontWeight: FontWeight.normal,
         height: 1.5,
+        textBaseline: TextBaseline.alphabetic,
       ),
-      bodyMedium: TextStyle(
+      bodySmall: TextStyle(
         fontFamily: fontFamily,
         fontSize: 14,
         fontWeight: FontWeight.normal,
         height: 1.5,
-      ),
-      bodySmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 12,
-        fontWeight: FontWeight.normal,
-        height: 1.4,
-      ),
-      labelLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-        height: 1.5,
-      ),
-      titleMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 18,
-        fontWeight: FontWeight.normal,
-        height: 1.4,
-      ),
-      titleSmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 18,
-        fontWeight: FontWeight.normal,
-        height: 1.3,
+        textBaseline: TextBaseline.alphabetic,
       ),
     );
   }
