@@ -24,7 +24,6 @@ dependencies:
   awesome_dialog:
   shared_preferences:
   google_fonts:
-<<<<<<< HEAD
 
   # Firebase dependencies
   firebase_core: ^2.31.0
@@ -39,18 +38,6 @@ dependencies:
   provider: ^6.1.2
   introduction_screen:
 
-=======
-  firebase_core: ^3.10.1
-  firebase_auth: ^4.17.7
-  cloud_firestore: ^5.6.2
-  firebase_storage: ^12.4.1
-  google_sign_in: ^6.2.2
-  firebase_messaging: ^15.2.1
-  provider: ^6.1.2
-  introduction_screen:
-
-  intl: any
->>>>>>> 5a042bb7c6a19462eb4471495630e8e171b14e7f
   internet_connection_checker_plus: ^1.0.0
 
 dev_dependencies:

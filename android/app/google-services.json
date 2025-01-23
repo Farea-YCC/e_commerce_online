@@ -1,19 +1,12 @@
 {
   "project_info": {
-<<<<<<< HEAD
     "project_number": "701648263286",
     "project_id": "e-commerce-online-3929a",
     "storage_bucket": "e-commerce-online-3929a.firebasestorage.app"
-=======
-    "project_number": "7269093136",
-    "project_id": "ecommerce-86217",
-    "storage_bucket": "ecommerce-86217.firebasestorage.app"
->>>>>>> 5a042bb7c6a19462eb4471495630e8e171b14e7f
   },
   "client": [
     {
       "client_info": {
-<<<<<<< HEAD
         "mobilesdk_app_id": "1:701648263286:android:94b58734503ae71ba12757",
         "android_client_info": {
           "package_name": "com.example.auth_firebase"
@@ -28,22 +21,10 @@
       "api_key": [
         {
           "current_key": "AIzaSyDsVA5_ObU-U3t-Ktatx_fraKv1_0AWtXo"
-=======
-        "mobilesdk_app_id": "1:7269093136:android:4198fa29133153420cdf95",
-        "android_client_info": {
-          "package_name": "com.example.e_commerce_online"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCuTfGeuxOFN_hsF1mI3nBCbUaFadp2QI0"
->>>>>>> 5a042bb7c6a19462eb4471495630e8e171b14e7f
         }
       ],
       "services": {
         "appinvite_service": {
-<<<<<<< HEAD
           "other_platform_oauth_client": [
             {
               "client_id": "701648263286-91gvacd0m1e7kq6md1joaqhd7tpugsnq.apps.googleusercontent.com",
@@ -57,15 +38,11 @@
               }
             }
           ]
-=======
-          "other_platform_oauth_client": []
->>>>>>> 5a042bb7c6a19462eb4471495630e8e171b14e7f
         }
       }
     },
     {
       "client_info": {
-<<<<<<< HEAD
         "mobilesdk_app_id": "1:701648263286:android:d2e3edac701d5389a12757",
         "android_client_info": {
           "package_name": "com.example.e_commerce_online"
@@ -88,22 +65,10 @@
       "api_key": [
         {
           "current_key": "AIzaSyDsVA5_ObU-U3t-Ktatx_fraKv1_0AWtXo"
-=======
-        "mobilesdk_app_id": "1:7269093136:android:31000d3159867e950cdf95",
-        "android_client_info": {
-          "package_name": "com.example.ecommerce_online"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCuTfGeuxOFN_hsF1mI3nBCbUaFadp2QI0"
->>>>>>> 5a042bb7c6a19462eb4471495630e8e171b14e7f
         }
       ],
       "services": {
         "appinvite_service": {
-<<<<<<< HEAD
           "other_platform_oauth_client": [
             {
               "client_id": "701648263286-91gvacd0m1e7kq6md1joaqhd7tpugsnq.apps.googleusercontent.com",
@@ -117,9 +82,6 @@
               }
             }
           ]
-=======
-          "other_platform_oauth_client": []
->>>>>>> 5a042bb7c6a19462eb4471495630e8e171b14e7f
         }
       }
     }
