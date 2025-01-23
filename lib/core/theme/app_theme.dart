@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import '../imports/imports.dart';
+
 class AppTheme {
   static const Color primaryColor = Color(0xFFF2684D);
   static const Color secondaryColor = Color(0xFF000505);
@@ -9,8 +10,8 @@ class AppTheme {
   /// Light Theme
   static ThemeData get lightTheme {
     return ThemeData(
-      bottomSheetTheme: const BottomSheetThemeData(
-        backgroundColor: contentColor,
+      bottomSheetTheme:  BottomSheetThemeData(
+        backgroundColor:contentColor,
         modalBackgroundColor: contentColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
@@ -20,11 +21,11 @@ class AppTheme {
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: contentColor,
         selectedItemColor: primaryColor,
-        unselectedItemColor: secondaryColor,
+        unselectedItemColor: thirdColor,
         elevation: 0,
         type: BottomNavigationBarType.fixed,
       ),
-      dialogBackgroundColor:  Colors.white,
+      // dialogBackgroundColor:  Colors.white,
       dialogTheme: _dialoglightTheme(contentColor, secondaryColor),
       useMaterial3: true,
       colorScheme: _lightColorScheme,
@@ -44,7 +45,7 @@ class AppTheme {
         cursorColor: primaryColor.withOpacity(1.0),
       ),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: successColor ,
+        backgroundColor: successColor,
         contentTextStyle: const TextStyle(color: contentColor),
         behavior: SnackBarBehavior.floating,
         elevation: 2,
@@ -59,7 +60,7 @@ class AppTheme {
   static ThemeData get darkTheme {
     return ThemeData(
       bottomSheetTheme: const BottomSheetThemeData(
-        backgroundColor: secondaryColor,
+        backgroundColor: thirdColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
         ),
@@ -75,7 +76,7 @@ class AppTheme {
       dialogBackgroundColor: const Color(0xFF393939),
       dialogTheme: _dialogDarkTheme(secondaryColor, contentColor),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: successColor ,
+        backgroundColor: successColor,
         contentTextStyle: const TextStyle(color: contentColor),
         behavior: SnackBarBehavior.floating,
         elevation: 2,
@@ -90,8 +91,8 @@ class AppTheme {
       cardColor: const Color(0xFF393939),
       inputDecorationTheme: _inputDecorationTheme(contentColor, thirdColor),
       elevatedButtonTheme: _darkElevatedButtonTheme(),
-      floatingActionButtonTheme: _floatingActionButtonTheme(
-          const Color(0xFF393939), contentColor),
+      floatingActionButtonTheme:
+          _floatingActionButtonTheme(const Color(0xFF393939), contentColor),
       textTheme: _getTextTheme(),
       splashFactory: InkRipple.splashFactory,
       splashColor: primaryColor.withOpacity(0.08),
@@ -107,7 +108,7 @@ class AppTheme {
   static DialogTheme _dialogDarkTheme(
       Color backgroundColor, Color contentColor) {
     return DialogTheme(
-      backgroundColor: thirdColor,
+      backgroundColor: AppTheme.thirdColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -127,7 +128,7 @@ class AppTheme {
   static DialogTheme _dialoglightTheme(
       Color backgroundColor, Color contentColor) {
     return DialogTheme(
-      backgroundColor: contentColor,
+      backgroundColor: AppTheme.contentColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -182,13 +183,14 @@ class AppTheme {
     centerTitle: true,
     elevation: 0,
     backgroundColor: secondaryColor,
-    iconTheme: IconThemeData(color: secondaryColor),
+    iconTheme: IconThemeData(color: contentColor),
   );
 
-  /// Input Decoration Theme
-  static InputDecorationTheme _inputDecorationTheme(Color borderColor, Color backgroundColor) {
-    return InputDecorationTheme(
 
+  /// Input Decoration Theme
+  static InputDecorationTheme _inputDecorationTheme(
+      Color borderColor, Color backgroundColor) {
+    return InputDecorationTheme(
       fillColor: backgroundColor,
       filled: true,
       border: OutlineInputBorder(

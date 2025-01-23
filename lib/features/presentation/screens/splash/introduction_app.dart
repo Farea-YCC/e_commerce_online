@@ -9,8 +9,7 @@ class IntroductionApp extends StatefulWidget {
   IntroductionAppState createState() => IntroductionAppState();
 }
 
-class IntroductionAppState extends State<IntroductionApp>
-    with SingleTickerProviderStateMixin {
+class IntroductionAppState extends State<IntroductionApp> with SingleTickerProviderStateMixin {
   bool _showWalkthrough = true;
   late TabController _tabController;
 
@@ -87,11 +86,11 @@ class IntroductionAppState extends State<IntroductionApp>
           indicatorColor: AppTheme.primaryColor,
           labelColor: AppTheme.primaryColor,
           unselectedLabelColor: Colors.grey,
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.w800,
           ),
-          unselectedLabelStyle: TextStyle(
+          unselectedLabelStyle: const TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.w800,
           ),

@@ -1,11 +1,51 @@
 import 'package:shopping/core/imports/imports.dart';
+import 'package:shopping/features/presentation/widgets/custom_logout_dialog.dart';
 import 'package:shopping/features/presentation/widgets/customdialog_about.dart';
 import 'package:shopping/features/presentation/widgets/language_switcher.dart';
-class Profile extends StatelessWidget {
+
+import 'package:shopping/core/imports/imports.dart';
+import 'package:shopping/features/presentation/widgets/custom_logout_dialog.dart';
+import 'package:shopping/features/presentation/widgets/customdialog_about.dart';
+import 'package:shopping/features/presentation/widgets/language_switcher.dart';
+
+class Profile extends StatefulWidget {
   const Profile({super.key});
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  late User? user;
+  bool _showWalkthrough = true;
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    user = _auth.currentUser;
+    _tabController = TabController(vsync: this, initialIndex: 1, length: 2);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose(); // تأكد من التخلص من TabController
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+
+    return Scaffold(
+      body: _buildJoinApp(),
+    );
+  }
+
+  Widget _buildJoinApp() {
     return ListView(
       padding: const EdgeInsets.all(16.0),
       children: [
@@ -14,64 +54,125 @@ class Profile extends StatelessWidget {
         _buildListTile(
           context,
           icon: Icons.share,
-          title: l10n.share,
+          title: AppLocalizations.of(context)!.share,
           onTap: () => _handleShare(context, AppLocalizations.of(context)!),
         ),
         _buildListTile(
           context,
           icon: Icons.favorite_border,
-          title: l10n.don_favorites,
+          title: AppLocalizations.of(context)!.don_favorites,
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) =>
-                    const Center(child: Text("Favorites Page")),
-              ),
-            );
+            Navigator.pushReplacementNamed(context, '/FavoritesPage');
           },
         ),
         _buildListTile(
           context,
           icon: Icons.info_outline,
-          title: l10n.about,
+          title: AppLocalizations.of(context)!.about,
           onTap: () => _showDialog(
             context,
-            title: l10n.about,
-            message: l10n.aboutmsg,
+            title: AppLocalizations.of(context)!.about,
+            message: AppLocalizations.of(context)!.aboutmsg,
             icon: Icons.info_outline,
           ),
         ),
         _buildListTile(
           context,
           icon: Icons.help_outline,
-          title: l10n.help,
+          title: AppLocalizations.of(context)!.help,
           onTap: () => _showDialog(
             context,
-            title: l10n.help,
-            message: l10n.contactwithus,
+            title: AppLocalizations.of(context)!.help,
+            message: AppLocalizations.of(context)!.contactwithus,
             icon: Icons.help_center_outlined,
           ),
         ),
         _buildCustomDivider(),
         const LanguageSwitcher(),
+
+        // زر تسجيل الخروج
+        _buildListTile(
+          context,
+          icon: Icons.logout,
+          title: AppLocalizations.of(context)!.logout,
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return CustomLogoutDialog(
+                  context,
+                  onLogout: () async {
+                    try {
+                      if (user != null) {
+                        // تسجيل الخروج من Firebase و Google
+                        await _auth.signOut();
+                        await GoogleSignIn().signOut();
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("تم تسجيل الخروج بنجاح")),
+                        );
+
+                        // تجاوز شاشة المقدمة والانتقال إلى شاشة تسجيل الدخول
+                        setState(() {
+                          _showWalkthrough = false;
+                        });
+
+                        // الانتقال إلى شاشة تسجيل الدخول
+                        Navigator.pushReplacementNamed(context, '/LoginPage');
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("لا يوجد مستخدم مسجل حاليًا")),
+                        );
+                      }
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("فشل تسجيل الخروج: $e")),
+                      );
+                    }
+                  },
+                  onCancel: () {
+                    Navigator.pop(
+                        context); // إغلاق نافذة تسجيل الخروج عند الإلغاء
+                  },
+                );
+              },
+            );
+          },
+        ),
       ],
     );
   }
+
   Widget _buildProfileHeader() {
-    
-    return const Column(
-      children: [
-        CircleAvatar(
-          radius: 50,
-          backgroundImage: NetworkImage('https://via.placeholder.com/150'),
-        ),
-        SizedBox(height: 16),
-        Text(
-          "Farea AL-Dhela’a",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        Text("farea.738@gmail.com"),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            radius: 50,
+            backgroundImage: NetworkImage(
+                user?.photoURL ?? 'https://via.placeholder.com/150'),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            user?.displayName ?? 'اسم المستخدم',
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            user?.email ?? 'البريد الإلكتروني',
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
+            ),
+          ),
+          const SizedBox(height: 24),
+        ],
+      ),
     );
   }
 

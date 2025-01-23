@@ -24,7 +24,6 @@ class LanguageSwitcher extends StatelessWidget {
     ];
 
     showModalBottomSheet(
-      backgroundColor: AppTheme.thirdColor,
       context: context,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),

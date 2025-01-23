@@ -61,7 +61,7 @@ class MyAppState extends State<MyApp> {
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: ThemeMode.system,
-            initialRoute: '/BottomNavBar',
+            initialRoute: '/SplashScreen',
             onGenerateRoute: onGenerateRoute,
           );
         },
