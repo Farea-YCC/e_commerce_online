@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 <manifest xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
+=======
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+>>>>>>> 5a042bb7c6a19462eb4471495630e8e171b14e7f
     <application
         android:label="سلتي"
         android:name="${applicationName}"
         android:usesCleartextTraffic="true"
+<<<<<<< HEAD
         android:icon="@mipmap/ic_launcher"
         tools:targetApi="m">
+=======
+        android:icon="@mipmap/ic_launcher">
+>>>>>>> 5a042bb7c6a19462eb4471495630e8e171b14e7f
         <activity
             android:name=".MainActivity"
             android:exported="true"

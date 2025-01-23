@@ -4,11 +4,22 @@ buildscript {
         google()
         mavenCentral()
     }
+<<<<<<< HEAD
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.4.2'
     }
 }
+=======
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.4.2'
+        classpath "com.android.tools.build:gradle:8.3.2"  // الإصدار المتوافق مع Flutter 3.5.3
+    }
+}
+
+>>>>>>> 5a042bb7c6a19462eb4471495630e8e171b14e7f
 allprojects {
     repositories {
         google()

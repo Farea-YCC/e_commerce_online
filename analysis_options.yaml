@@ -7,6 +7,12 @@
 
 # The following line activates a set of recommended lints for Flutter apps,
 # packages, and plugins designed to encourage good coding practices.
+<<<<<<< HEAD
+=======
+analyzer:
+  errors:
+    prefer_const_constructors: ignore
+>>>>>>> 5a042bb7c6a19462eb4471495630e8e171b14e7f
 include: package:flutter_lints/flutter.yaml
 
 linter:
