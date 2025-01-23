@@ -18,6 +18,7 @@
   "aboutmsg": "V 3.2.1",
   "language": "Idioma",
   "help": "Ayuda",
+  "logoutDialogTitle": "Cerrar sesión",
   "don_favorites": "Favoritos",
   "favorites": "Favoritos",
   "unfavorites": "Eliminar de favoritos",

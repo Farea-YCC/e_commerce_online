@@ -5,7 +5,6 @@ void main() async {
   final prefs = await SharedPreferences.getInstance();
 
   try {
-    // تحقق من التهيئة
     if (Firebase.apps.isEmpty) {
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,

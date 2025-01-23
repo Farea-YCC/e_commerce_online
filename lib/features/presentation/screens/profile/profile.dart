@@ -2,12 +2,6 @@ import 'package:shopping/core/imports/imports.dart';
 import 'package:shopping/features/presentation/widgets/custom_logout_dialog.dart';
 import 'package:shopping/features/presentation/widgets/customdialog_about.dart';
 import 'package:shopping/features/presentation/widgets/language_switcher.dart';
-
-import 'package:shopping/core/imports/imports.dart';
-import 'package:shopping/features/presentation/widgets/custom_logout_dialog.dart';
-import 'package:shopping/features/presentation/widgets/customdialog_about.dart';
-import 'package:shopping/features/presentation/widgets/language_switcher.dart';
-
 class Profile extends StatefulWidget {
   const Profile({super.key});
 

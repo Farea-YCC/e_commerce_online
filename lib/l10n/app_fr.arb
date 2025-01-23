@@ -17,6 +17,7 @@
   "aboutmsg": "V 3.2.1",
   "language": "Langue",
   "help": "Aide",
+  "logoutDialogTitle": "Deconnexion",
   "don_favorites": "Les Favoris",
   "favorites": "Favoris",
   "unfavorites": "Retirer des favoris",

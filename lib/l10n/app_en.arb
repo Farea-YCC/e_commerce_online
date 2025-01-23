@@ -15,7 +15,7 @@
   "russian": "Russisch",
   "chinese": "Chinesisch",
   "japanese": "Japanisch",
-
+  "logoutDialogTitle": "Do you want to log out?",
     "edit": "Edit",
     "save": "Save",
     "cancel": "Cancel",

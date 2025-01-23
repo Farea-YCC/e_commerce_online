@@ -1,4 +1,3 @@
-
 import 'package:shopping/core/imports/imports.dart';
 class CustomLogoutDialog extends StatelessWidget {
   final String title;
@@ -7,7 +6,7 @@ class CustomLogoutDialog extends StatelessWidget {
 
   const CustomLogoutDialog(BuildContext context, {
     super.key,
-    this.title = "هل تريد تسجيل الخروج؟",
+    this.title = "هل تريد تسجيل الخروج؟", // Default title in Arabic
     required this.onLogout,
     required this.onCancel,
   });
@@ -41,12 +40,10 @@ class CustomLogoutDialog extends StatelessWidget {
             Icon(
               Icons.logout_rounded,
               size: 60,
-              color: isDarkMode ? AppTheme.primaryColor : AppTheme.primaryColor, // الألوان
+              color: isDarkMode ? AppTheme.primaryColor : AppTheme.primaryColor, // Colors
             ),
             const SizedBox(height: 20),
-            Text(
-              title,
-              style: TextStyle(
+            Text(l10n.logoutDialogTitle, style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
@@ -71,7 +68,7 @@ class CustomLogoutDialog extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                     child: Text(
-                      l10n.cancel,
+                      l10n.cancel,  // Localized 'cancel' string
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -87,14 +84,16 @@ class CustomLogoutDialog extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: onLogout,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:    isDarkMode ? AppTheme.primaryColor : AppTheme.primaryColor, // الألوان
+                      backgroundColor: isDarkMode
+                          ? AppTheme.primaryColor
+                          : AppTheme.primaryColor, // Colors
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                     child: Text(
-                      l10n.logout,
+                      l10n.logout,  // Localized 'logout' string
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
