@@ -17,6 +17,7 @@
   "aboutmsg": "V 3.2.1",
   "language": "Sprache",
   "logoutDialogTitle":"Abmelden",
+  "logoutSuccess":"Abgemeldet",
   "help": "Hilfe",
   "don_favorites": "Die Favoriten",
   "favorites": "Favoriten",

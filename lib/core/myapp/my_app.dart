@@ -1,4 +1,6 @@
-import '../imports/imports.dart';
+
+import 'package:shopping/core/imports/imports.dart';
+
 class MyApp extends StatefulWidget {
   final SharedPreferences prefs;
   const MyApp({super.key, required this.prefs});

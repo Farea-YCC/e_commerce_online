@@ -18,7 +18,9 @@ export 'package:flutter/services.dart';
 export 'package:shopping/core/myapp/my_app.dart';
 export 'dart:convert';
 export 'package:http/http.dart' ;
-
+export 'package:shopping/features/presentation/widgets/custom_logout_dialog.dart';
+export 'package:shopping/features/presentation/widgets/customdialog_about.dart';
+export 'package:shopping/features/presentation/widgets/language_switcher.dart';
 export 'package:share_plus/share_plus.dart';
 
 export 'package:shopping/core/routes/routes.dart';

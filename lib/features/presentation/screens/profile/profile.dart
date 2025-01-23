@@ -1,7 +1,5 @@
 import 'package:shopping/core/imports/imports.dart';
-import 'package:shopping/features/presentation/widgets/custom_logout_dialog.dart';
-import 'package:shopping/features/presentation/widgets/customdialog_about.dart';
-import 'package:shopping/features/presentation/widgets/language_switcher.dart';
+
 class Profile extends StatefulWidget {
   const Profile({super.key});
 
@@ -26,7 +24,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    _tabController.dispose(); // تأكد من التخلص من TabController
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -93,20 +91,19 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
             showDialog(
               context: context,
               builder: (BuildContext context) {
+                final l10n = AppLocalizations.of(context)!;
                 return CustomLogoutDialog(
                   context,
                   onLogout: () async {
                     try {
                       if (user != null) {
-                        // تسجيل الخروج من Firebase و Google
                         await _auth.signOut();
                         await GoogleSignIn().signOut();
 
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("تم تسجيل الخروج بنجاح")),
+                          SnackBar(content: Text(l10n.logoutSuccess)),
                         );
 
-                        // تجاوز شاشة المقدمة والانتقال إلى شاشة تسجيل الدخول
                         setState(() {
                           _showWalkthrough = false;
                         });
@@ -115,7 +112,8 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                         Navigator.pushReplacementNamed(context, '/LoginPage');
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("لا يوجد مستخدم مسجل حاليًا")),
+                          const SnackBar(
+                              content: Text("لا يوجد مستخدم مسجل حاليًا")),
                         );
                       }
                     } catch (e) {
